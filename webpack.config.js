@@ -4,16 +4,16 @@ const webpack = require("webpack");
 /** @type {import('webpack').Configuration} */
 const config = {
   target: "web",
-  ignoreWarnings: [/size limit/],
+  ignoreWarnings: [/performance/],
   mode: process.env.NODE_ENV,
   plugins: [
-    {
-      apply(compiler) {
-        new webpack.EntryPlugin(compiler.context, "./src/initial.js", {
-          name: undefined,
-        }).apply(compiler);
-      },
-    },
+    // {
+    //   apply(compiler) {
+    //     new webpack.EntryPlugin(compiler.context, "./src/initial.js", {
+    //       name: undefined,
+    //     }).apply(compiler);
+    //   },
+    // },
     new Html({
       template: "index.html",
     }),
@@ -31,7 +31,7 @@ const config = {
       chunks: "all",
       cacheGroups: {
         lib: {
-          test: /(initial.js|core-js)/,
+          test: /core-js/,
           name: "lib",
         },
         default: false,
@@ -46,11 +46,11 @@ const config = {
   },
   experiments: {
     // css: true,
-    lazyCompilation: {
-      test: (m) => {
-        return !m.nameForCondition().includes("initial");
-      },
-    },
+    // lazyCompilation: {
+    //   test: (m) => {
+    //     return !m.nameForCondition().includes("initial");
+    //   },
+    // },
   },
   devServer: {
     hot: true,

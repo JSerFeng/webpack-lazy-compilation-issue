@@ -1,4 +1,7 @@
-import 'core-js/package.json'
+try {
+  require("core-js/package.json");
+} catch (_err) {}
 
+module.hot.accept();
 
-export default 1
+module.exports = 1;

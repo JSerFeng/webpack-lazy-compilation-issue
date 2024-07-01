@@ -1,4 +1,6 @@
-import './initial'
-import 'core-js'
+import 'core-js/package.json'
 
-alert('hello')
+import('./initial')
+
+module.hot.accept();
+document.write('hello')
